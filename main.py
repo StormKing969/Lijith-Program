@@ -28,19 +28,16 @@ def getMedium(current):
         return "{:.2f}".format(float(middleVal))
 
 
-def getFloatInput(val):
+def getFloatInput():
     # User input
-    propertyValue = input("Enter the property Value: $ ")
+    propertyValue = input("Enter the property Value 1: $ ")
 
     # Loops if the userInput contains letter or is zero
-    while propertyValue.isalpha() or propertyValue == "0":
+    if propertyValue.isalpha():
         print("Input a number that is greater than 0")
-        propertyValue = input("Enter the property Value: $ ")
-
     # Checks if the userInput is less or equal to zero
     if float(propertyValue) <= 0:
         print("Input a number that is greater than 0")
-        getFloatInput("Enter property sales value: $ ")
     else:
         # Returns the value if all the conditions pass
         return "{:.2f}".format(float(propertyValue))
@@ -61,7 +58,12 @@ def AvgAmount(numbers, total):
 
 
 if __name__ == '__main__':
-    sPropertyList.append(getFloatInput("Enter the property Value: $ "))
+    x = getFloatInput()
+
+    while x == None:
+        x = getFloatInput()
+
+    sPropertyList.append(x)
 
     # Checking if user wants to add more property
     sCondition = input("Do you want to add another property Y or N: ").upper()
@@ -73,7 +75,7 @@ if __name__ == '__main__':
             break
 
     while sCondition != "N":
-        sPropertyList.append(getFloatInput("Enter the property Value: $ "))
+        sPropertyList.append(getFloatInput())
         sCondition = input("Do you want to add another property Y or N: ").upper()
 
     # Sorts the list in order
